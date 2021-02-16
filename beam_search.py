@@ -150,7 +150,7 @@ def beam_search(enc_hid, enc_out, enc_padding_mask, ct_e, extra_zeros, enc_batch
             if prev_s is not None:
                 prev_s_i = prev_s[i]                                                #beam, t, n_hid
             beam.advance(final_dist[i], (dec_h[i], dec_c[i]), ct_e[i], sum_temporal_srcs_i, prev_s_i)
-            if beam.done == False:
+            if not beam.done:
                 active.append(b)
 
         if len(active) == 0:
