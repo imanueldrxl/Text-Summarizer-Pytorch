@@ -23,8 +23,10 @@ if T.cuda.is_available():
 class Train(object):
     def __init__(self, opt):
         self.vocab = Vocab(config.vocab_path, config.vocab_size)
-        self.batcher = Batcher(config.train_data_path, self.vocab, mode='train',
-                               batch_size=config.batch_size, single_pass=False)
+        self.batcher = Batcher(config.train_data_path,
+                               self.vocab, mode='train',
+                               batch_size=config.batch_size,
+                               single_pass=False)
         self.opt = opt
         self.start_id = self.vocab.word2id(data.START_DECODING)
         self.end_id = self.vocab.word2id(data.STOP_DECODING)
